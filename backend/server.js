@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/connectDB.js";
 import connectCloudinary from "./config/cloudinary.js";
+import adminRouter from "./routes/adminRouter.js";
 
 config({path: "./env/config.env"});
 
@@ -14,6 +15,8 @@ connectCloudinary();
 server.use(express.json());
 server.use(cookieParser());
 server.use(cors());
+
+server.use("/hms/admin", adminRouter);
 
 server.get("/", (req, res)=> {
     return res.status(200).json({
