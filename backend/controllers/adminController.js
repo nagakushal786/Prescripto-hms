@@ -104,3 +104,18 @@ export const adminLogin=async (req, res)=> {
         });
     }
 }
+
+export const getAllDoctors=async (req, res)=> {
+    try{
+        const doctors=await doctorModel.find().select("-password");
+        return res.status(200).json({
+            success: true,
+            doctors: doctors
+        });
+    }catch(err){
+        return res.status(400).json({
+            message: err.message || err,
+            error: true
+        });
+    }
+}

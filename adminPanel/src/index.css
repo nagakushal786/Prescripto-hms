@@ -16,3 +16,7 @@
 .text-primary {
     color: var(--color-primary);
 }
+
+::-webkit-scrollbar{
+    @apply hidden
+}

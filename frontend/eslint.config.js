@@ -33,6 +33,7 @@ export default [
       'react/no-unused-vars': 'off',
       'react/prop-types': 'off',
       'react-hooks/exhaustive-deps': 'off',
+      'no-use': 'off',
       'react-refresh/only-export-components': [
         'off',
         'warn',
