@@ -1,14 +1,57 @@
 import { useContext, useState } from "react";
 import { assets } from "../assets/assets_frontend/assets";
 import { AppContext } from "../context/context";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const MyProfile = () => {
   const [isEdit, setIsEdit]=useState(false);
-  const {userData, setUserData}=useContext(AppContext);
+  const {userData, setUserData, backend_url, loadUserData, uToken}=useContext(AppContext);
+  const [image, setImage]=useState(false);
+
+  const updateUserProfileData=async ()=> {
+    try{
+      const formData=new FormData();
+
+      formData.append('name', userData.name);
+      formData.append('phone', userData.phone);
+      formData.append('gender', userData.gender);
+      formData.append('dob', userData.dob);
+
+      image && formData.append('image', image);
+
+      const {data}=await axios.post(`${backend_url}/hms/user/updateProfile`, formData, {
+        headers: {
+          uToken
+        }
+      });
+
+      if(data.success){
+        toast.success(data.message);
+        await loadUserData();
+        setIsEdit(false);
+        setImage(false);
+      }else{
+        toast.error(data.message);
+      }
+    }catch(err){
+      toast.error(err.message || err);
+    }
+  }
 
   return (
     <div className="max-w-lg flex flex-col gap-2 text-sm">
-      <img className="w-36 rounded" src={userData.image} alt="user"/>
+      {
+        isEdit
+        ? <label htmlFor="image">
+          <div className="inline-block relative cursor-pointer">
+            <img src={image ? URL.createObjectURL(image) : userData.image} alt="change" className="w-36 rounded opacity-75"/>
+            <img src={image ? '' : assets.upload_icon} alt="" className="w-10 absolute bottom-12 right-12"/>
+          </div>
+          <input onChange={(e)=> setImage(e.target.files[0])} type="file" id="image" hidden/>
+        </label>
+        : <img className="w-36 rounded" src={userData.image} alt="user"/>
+      }
 
       {
         isEdit
@@ -57,7 +100,7 @@ const MyProfile = () => {
       <div className="mt-10">
         {
           isEdit
-          ? <button className="border border-primary hover:bg-[#5f6FFF] hover:text-white transition-all duration-300 px-8 py-2 rounded-full" onClick={()=> setIsEdit(false)}>Save Information</button>
+          ? <button className="border border-primary hover:bg-[#5f6FFF] hover:text-white transition-all duration-300 px-8 py-2 rounded-full" onClick={updateUserProfileData}>Save Information</button>
           : <button className="border border-primary hover:bg-[#5f6FFF] hover:text-white transition-all duration-300 px-8 py-2 rounded-full" onClick={()=> setIsEdit(true)}>Edit Information</button>
         }
       </div>

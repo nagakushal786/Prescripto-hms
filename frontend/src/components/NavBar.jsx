@@ -7,11 +7,12 @@ import { AppContext } from "../context/context";
 const NavBar = () => {
   const navigate=useNavigate();
   const [showMenu, setShowMenu]=useState(false);
-  const {uToken, setUToken}=useContext(AppContext);
+  const {uToken, setUToken, userData}=useContext(AppContext);
 
   const handleLogout=async ()=> {
     setUToken(false);
     localStorage.removeItem("UserToken");
+    navigate("/");
   }
 
   return (
@@ -37,9 +38,9 @@ const NavBar = () => {
         </ul>
         <div className="flex items-center gap-4">
             {
-                uToken
+                uToken && userData
                 ? <div className="flex items-center gap-2 cursor-pointer group relative">
-                    <img className="w-8 rounded-full" src={assets.profile_pic} alt="pic"/>
+                    <img className="w-8 rounded-full" src={userData.image} alt="pic"/>
                     <img className="w-2.5" src={assets.dropdown_icon} alt="drop"/>
                     <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block">
                         <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
@@ -48,7 +49,7 @@ const NavBar = () => {
                             <p onClick={handleLogout} className="hover:text-black cursor-pointer">Logout</p>
                         </div>
                     </div>
-                </div>
+                </div> 
                 : <button onClick={()=> navigate("/login")} className="bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block cursor-pointer">Create Account</button>
             }
             

@@ -80,7 +80,8 @@ const AppContextProvider=(props)=> {
         backend_url,
         userData,
         setUserData,
-        loadUserData
+        loadUserData,
+        getDoctorData
     };
 
     return (

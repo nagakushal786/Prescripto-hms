@@ -20,7 +20,7 @@ const userSchema=new mongoose.Schema({
     },
     gender: {
         type: String,
-        default: "Not selected"
+        default: "Male"
     },
     dob: {
         type: String,
