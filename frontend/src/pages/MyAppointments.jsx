@@ -110,7 +110,7 @@ const MyAppointments = () => {
       <p className="pb-3 mt-12 font-medium text-zinc-700 border-b">My Appointments</p>
       <div className="mt-2">
         {
-          appointments.map((user, idx)=> (
+          appointments.reverse().map((user, idx)=> (
             <div key={idx} className="grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b border-b-zinc-400 mb-1">
               <div>
                 <img className="w-36 bg-indigo-50" src={user.docData.image} alt="user" />
