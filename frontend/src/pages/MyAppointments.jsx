@@ -126,10 +126,11 @@ const MyAppointments = () => {
               </div>
               <div></div>
               <div className="flex flex-col gap-2 justify-end">
-                {!user.cancelled && user.payment && <button className="sm:min-w-48 py-1 border border-green-500 rounded text-green-500">Paid</button>}
-                {!user.cancelled && !user.payment && <button onClick={()=> appRazorpay(user._id)} className="text-xs font-semibold text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-[#5f6FFF] hover:text-white transition-all duration-300 cursor-pointer">Pay Online</button>}
-                {!user.cancelled && <button onClick={()=> cancelAppointment(user._id)} className="text-xs font-semibold text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer">Cancel Appointment</button>}
-                {user.cancelled && <button className="sm:min-w-48 py-1 border border-red-500 rounded text-red-500">Appointment cancelled</button>}
+                {!user.cancelled && user.payment && !user.isCompleted && <button className="sm:min-w-48 py-1 border border-green-500 rounded text-green-500">Paid</button>}
+                {!user.cancelled && !user.payment && !user.isCompleted && <button onClick={()=> appRazorpay(user._id)} className="text-xs font-semibold text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-[#5f6FFF] hover:text-white transition-all duration-300 cursor-pointer">Pay Online</button>}
+                {!user.cancelled && !user.isCompleted && <button onClick={()=> cancelAppointment(user._id)} className="text-xs font-semibold text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer">Cancel Appointment</button>}
+                {user.cancelled && !user.isCompleted && <button className="sm:min-w-48 py-1 border border-red-500 rounded text-red-500">Appointment cancelled</button>}
+                {user.isCompleted && <button className="sm:min-w-48 py-1 border border-green-500 rounded text-green-500">Completed</button>}
               </div>
             </div>
           ))

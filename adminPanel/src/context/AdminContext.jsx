@@ -111,7 +111,6 @@ const AdminContextProvider=(props)=> {
 
             if(data.success){
                 setDashData(data.dashboardData);
-                console.log(data.dashboardData);
             }else{
                 toast.error(data.message);
             }
