@@ -3,6 +3,7 @@
 Prescripto is a web-based application designed to streamline medical prescription management. The project consists of a frontend built with Vite and a backend that facilitates seamless communication between doctors and patients.
 
 ## Features
+
 - **User Authentication**: Secure login and registration.
 - **Appointent Booking**: Book appointment for logged in users and easy way of booking.
 - **Prescription Management**: Create, update, and manage prescriptions digitally.
@@ -14,18 +15,23 @@ Prescripto is a web-based application designed to streamline medical prescriptio
 ## Installation & Setup
 
 ### Prerequisites
+
 Ensure you have the following installed:
 - Node.js (for frontend)
 - npm (for package management)
 - MongoDB (database used)
 
+
+
 ### Clone the Repository
+
 ```sh
 git clone https://github.com/nagakushal786/Prescripto-hms.git
 cd prescripto
 ```
 
 ### Backend Setup
+
 1. Navigate to the backend folder:
    ```sh
    cd backend
@@ -41,6 +47,7 @@ cd prescripto
    ```
 
 ### Admin Panel Setup
+
 1. Navigate to the adminPanel folder:
    ```sh
    cd adminPanel
@@ -56,9 +63,10 @@ cd prescripto
 4. Open `http://localhost:5173/` in your browser.
 
 ### Frontend Setup
+
 1. Navigate to the frontend folder:
    ```sh
-   cd adminPanel
+   cd frontend
    ```
 2. Install dependencies:
    ```sh
@@ -70,7 +78,10 @@ cd prescripto
    ```
 4. Open `http://localhost:5174/` in your browser.
 
+
+
 ## Folder Structure
+
 ```
 prescripto/
 ├── backend/               # Backend API
@@ -117,16 +128,25 @@ prescripto/
 └── .gitignore
 ```
 
+
+
 ## Usage
+
 - **Doctors**: Log in and manage the daily appointments of patients, view his earnings, no of appointments and no of patients. Also update his information.
 - **Patients**: Log in and book appointments with particular doctor based on the specialization, view his appointments, update his information and pay the fees of doctor through online using razorpay gateway.
 - **Admin**: Log in and manage the doctors schedule and patients appointments. He can even add a new doctor and update the availability of a particular doctor.
 
-## Documentation reference
-- **Backend API Documentation**: (Swagger documentation for backend)[https://localhost:4000/api-docs]
-- **Frontend Documentation**: Provided information in the README.md file
+
+
+## Documentation Reference
+
+- **Backend API Documentation**: [Swagger documentation for backend](https://localhost:4000/api-docs)
+- **Frontend Documentation**: Refer to the `README.md` file for more details.
+
+
 
 ## Contribution Guidelines
+
 1. Fork the repository.
 2. Create a feature branch.
 3. Make changes and commit them.
