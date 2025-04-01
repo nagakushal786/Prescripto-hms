@@ -7,6 +7,8 @@ import connectCloudinary from "./config/cloudinary.js";
 import adminRouter from "./routes/adminRouter.js";
 import doctorRouter from "./routes/doctorRouter.js";
 import userRouter from "./routes/userRouter.js";
+import swaggerDocs from "./swaggerOptions.js";
+import swaggerUi from "swagger-ui-express";
 
 config({path: "./env/config.env"});
 
@@ -18,6 +20,7 @@ server.use(express.json());
 server.use(cookieParser());
 server.use(cors());
 
+server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 server.use("/hms/admin", adminRouter);
 server.use("/hms/doctor", doctorRouter);
 server.use("/hms/user", userRouter);
