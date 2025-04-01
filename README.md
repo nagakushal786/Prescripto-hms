@@ -140,7 +140,7 @@ prescripto/
 
 ## Documentation Reference
 
-- **Backend API Documentation**: [Swagger documentation for backend](https://localhost:4000/api-docs)
+- **Backend API Documentation**: [Swagger documentation for backend](https://localhost:4000/api-docs) - Make sure you access the documentation after running the backend of the project.
 - **Frontend Documentation**: Refer to the `README.md` file for more details.
 
 
