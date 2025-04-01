@@ -17,7 +17,7 @@ const AppContextProvider=(props)=> {
         return `${dateArray[0]} ${months[Number(dateArray[1])]}, ${dateArray[2]}`;
     }
 
-    const currencySymbol="$";
+    const currencySymbol="₹";
 
     const value={
         calculateAge,

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export const AppContext=createContext();
 
 const AppContextProvider=(props)=> {
-    const currencySymbol='$';
+    const currencySymbol='₹';
     const backend_url=import.meta.env.VITE_BACKEND_URL;
     const [doctors, setDoctors]=useState([]);
     const [uToken, setUToken]=useState(localStorage.getItem("UserToken") ? localStorage.getItem("UserToken") : false);
