@@ -18,7 +18,18 @@ connectCloudinary();
 
 server.use(express.json());
 server.use(cookieParser());
-server.use(cors());
+
+const allowedOrigins = ['http://localhost:4000', 'https://prescripto-hms.vercel.app/'];
+server.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
 
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 server.use("/hms/admin", adminRouter);
