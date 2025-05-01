@@ -19,15 +19,8 @@ connectCloudinary();
 server.use(express.json());
 server.use(cookieParser());
 
-const allowedOrigins = ['http://localhost:4000', 'https://prescripto-hms.vercel.app/'];
-server.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+app.use(cors({
+    origin: 'https://prescripto-hms.vercel.app/',
     credentials: true
 }));
 
