@@ -16,13 +16,28 @@ const server=express();
 connectDB();
 connectCloudinary();
 
+// const allowedOrigins = [
+//     'http://localhost:5174',
+//     'https://prescripto-hms.vercel.app'
+// ];
+  
+// server.use(cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error('Not allowed by CORS: ' + origin));
+//       }
+//     },
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
+// }));
+  
+// server.options('*', cors());
 server.use(express.json());
 server.use(cookieParser());
-
-app.use(cors({
-    origin: 'https://prescripto-hms.vercel.app/',
-    credentials: true
-}));
+server.use(cors());
 
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 server.use("/hms/admin", adminRouter);
